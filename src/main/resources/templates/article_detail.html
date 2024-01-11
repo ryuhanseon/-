@@ -1,10 +1,14 @@
 <h1 th:text="${article.subject}"></h1>
 <div th:text="${article.content}"></div>
 <a th:href="@{/article/list}" class="btn btn-primary">목록으로 이동</a>
+
 <div class="my-3">
     <div class="my-3">
         <a th:href="@{/article/modify/{id}(id=${article.id})}" class="btn btn-sm btn-outline-secondary" th:text="수정"></a>
-
-
     </div>
 
+    <!-- 수정된 삭제 버튼 부분 -->
+    <form th:action="@{|/article/delete/${article.id}|}" method="post">
+        <button type="submit" class="btn btn-sm btn-outline-secondary" th:text="삭제">삭제</button>
+    </form>
+</div>

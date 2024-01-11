@@ -67,6 +67,20 @@ public class ArticleController {
             return "error";
         }
     }
+    @GetMapping("/delete/{id}")
+    public String showDeleteConfirmation(Model model, @PathVariable("id") Integer id) {
+        Article article = articleService.create(id);
+        model.addAttribute("article", article);
+        return "article_delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String articleDelete(@PathVariable("id") Integer id) {
+        articleService.delete(id);
+        return "redirect:/article/list";
+    }
+
+
 
 
 }
