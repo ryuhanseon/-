@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 폼</title>
+</head>
+<body>
+<h5 class="my-3 border-bottom pb-2">게시물 등록/수정</h5>
+<form th:object="${article}" th:action="@{/article/modify/{id}(id=${article.id})}" method="post">
+
+    <!-- CSRF 토큰 추가 -->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+    <!-- 제목 입력란 -->
+    <div class="mb-3">
+        <label for="subject" class="form-label">제목</label>
+        <input type="text" th:field="*{subject}" id="subject" class="form-control">
+    </div>
+
+    <!-- 내용 입력란 -->
+    <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea th:field="*{content}" id="content" class="form-control" rows="10"></textarea>
+    </div>
+
+    <!-- 저장 또는 수정 버튼 -->
+    <input type="submit" value="저장하기" class="btn btn-primary my-2">
+</form>
+</body>
+</html>
